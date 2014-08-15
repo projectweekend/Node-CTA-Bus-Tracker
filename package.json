@@ -18,5 +18,12 @@
   "bugs": {
     "url": "https://github.com/projectweekend/Node-CTA-Bus-Tracker/issues"
   },
-  "homepage": "https://github.com/projectweekend/Node-CTA-Bus-Tracker"
+  "homepage": "https://github.com/projectweekend/Node-CTA-Bus-Tracker",
+  "dependencies": {
+    "async": "^0.9.0",
+    "moment": "^2.8.1",
+    "request": "^2.40.0",
+    "underscore": "^1.6.0",
+    "xml2js": "^0.4.4"
+  }
 }
