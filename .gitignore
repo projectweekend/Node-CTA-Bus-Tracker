@@ -27,3 +27,5 @@ node_modules
 *.sublime-project
 
 *.sublime-workspace
+
+test.js
