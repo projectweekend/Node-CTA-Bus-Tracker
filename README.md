@@ -11,17 +11,27 @@ A Node.js package for the Chicago Transit Authority's bus tracker API. For compl
 npm install cta-bus-tracker
 ```
 
+
 ---------------------------
+
 
 #### Require It
 ```javascript
 var cta = require( "cta-bus-tracker" );
 ```
 
+
+---------------------------
+
+
 #### Initialize It
 ```javascript
 var busTracker = cta( "your CTA API KEY" );
 ```
+
+
+---------------------------
+
 
 #### Time
 ```javascript
@@ -37,6 +47,10 @@ busTracker.time( function ( err, data ) {
 ~~~javascript
 "2014-08-30T14:53:34-05:00"
 ~~~
+
+
+---------------------------
+
 
 #### Vehicles By ID
 ~~~javascript
@@ -71,6 +85,9 @@ busTracker.vehiclesById( vehicleIds, function ( err, data ) {
 ~~~
 
 **Note:** If more than one vehicle ID is provided *data* will be an array of objects.
+
+
+---------------------------
 
 
 #### Vehicles By route
@@ -109,6 +126,9 @@ busTracker.vehiclesById( routeIds, function ( err, data ) {
 ~~~
 
 
+---------------------------
+
+
 #### Routes
 ~~~javascript
 busTracker.routes( function ( err, data ) {
@@ -132,6 +152,9 @@ busTracker.routes( function ( err, data ) {
 ~~~
 
 
+---------------------------
+
+
 #### Route Directions
 ~~~javascript
 var routeId = "1";
@@ -151,6 +174,9 @@ busTracker.routeDirections( routeId, function ( err, data ) {
     'Southbound'
 ]
 ~~~
+
+
+---------------------------
 
 
 #### Stops
@@ -178,6 +204,10 @@ busTracker.stops( routeId, routeDirection, function ( err, data ) {
     ...
 ]
 ~~~
+
+
+---------------------------
+
 
 #### Patterns By ID
 ~~~javascript
@@ -217,6 +247,9 @@ busTracker.patternsById( patternIds, function ( err, data ) {
 **Note:** If more than one pattern ID is provided *data* will be an array of objects.
 
 
+---------------------------
+
+
 #### Patterns By Route
 ~~~javascript
 // a list of up to 10 pattern IDs
@@ -254,6 +287,9 @@ busTracker.patternsByRoute( routeId, function ( err, data ) {
     ...
 ]
 ~~~
+
+
+---------------------------
 
 
 #### Predictions By Stop
@@ -296,6 +332,9 @@ busTracker.predictionsByStop( options, function ( err, data ) {
 ~~~
 
 
+---------------------------
+
+
 #### Predictions By Vehicle
 ~~~javascript
 var options = {
@@ -336,6 +375,9 @@ busTracker.predictionsByVehicle( options, function ( err, data ) {
 ~~~
 
 
+---------------------------
+
+
 #### Service Bulletins By Route
 ~~~javascript
 var options = {
@@ -366,6 +408,10 @@ busTracker.serviceBulletinsByRoute( options, function ( err, data ) {
     ...
 ]
 ~~~
+
+
+---------------------------
+
 
 #### Service Bulletins By Route
 ~~~javascript
