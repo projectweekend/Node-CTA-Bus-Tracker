@@ -11,6 +11,8 @@ A Node.js package for the Chicago Transit Authority's bus tracker API. For compl
 npm install cta-bus-tracker
 ```
 
+---------------------------
+
 #### Require It
 ```javascript
 var cta = require( "cta-bus-tracker" );
