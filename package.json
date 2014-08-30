@@ -11,7 +11,10 @@
     "url": "https://github.com/projectweekend/Node-CTA-Bus-Tracker.git"
   },
   "keywords": [
-    "cta", "chicago", "bus", "transit"
+    "cta",
+    "chicago",
+    "bus",
+    "transit"
   ],
   "author": "Brian Hines",
   "license": "MIT",
@@ -25,5 +28,9 @@
     "request": "^2.40.0",
     "underscore": "^1.6.0",
     "xml2js": "^0.4.4"
+  },
+  "devDependencies": {
+    "chai": "^1.9.1",
+    "mocha": "^1.21.4"
   }
 }
