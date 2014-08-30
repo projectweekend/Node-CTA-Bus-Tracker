@@ -19,7 +19,7 @@ var cta = require( "cta-bus-tracker" );
 #### Initialize It
 ```javascript
 var busTracker = cta( "your CTA API KEY" );
-```javascript
+```
 
 #### Time
 ```javascript
