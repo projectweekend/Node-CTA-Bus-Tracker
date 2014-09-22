@@ -1,0 +1,448 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Node-CTA-Bus-Tracker by projectweekend</title>
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="javascripts/respond.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <!--[if lt IE 8]>
+    <link rel="stylesheet" href="stylesheets/ie.css">
+    <![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+  </head>
+  <body>
+      <div id="header">
+        <nav>
+          <li class="fork"><a href="https://github.com/projectweekend/Node-CTA-Bus-Tracker">View On GitHub</a></li>
+          <li class="downloads"><a href="https://github.com/projectweekend/Node-CTA-Bus-Tracker/zipball/master">ZIP</a></li>
+          <li class="downloads"><a href="https://github.com/projectweekend/Node-CTA-Bus-Tracker/tarball/master">TAR</a></li>
+          <li class="title">DOWNLOADS</li>
+        </nav>
+      </div><!-- end header -->
+
+    <div class="wrapper">
+
+      <section>
+        <div id="title">
+          <h1>Node-CTA-Bus-Tracker</h1>
+          <p>A Node.js package for the Chicago Transit Authority&#39;s bus tracker API</p>
+          <hr>
+          <span class="credits left">Project maintained by <a href="https://github.com/projectweekend">projectweekend</a></span>
+          <span class="credits right">Hosted on GitHub Pages &mdash; Theme by <a href="https://twitter.com/michigangraham">mattgraham</a></span>
+        </div>
+
+        <p>A Node.js package for the Chicago Transit Authority's bus tracker API. For complete details regarding the data returned for each method, check out the CTA's documentation: <a href="http://www.transitchicago.com/assets/1/developer_center/BusTime_Developer_API_Guide.pdf">http://www.transitchicago.com/assets/1/developer_center/BusTime_Developer_API_Guide.pdf</a></p>
+
+<h3>
+<a name="key-features" class="anchor" href="#key-features"><span class="octicon octicon-link"></span></a>Key Features</h3>
+
+<ul>
+<li>JSON is returned instead of the CTA's crappy XML</li>
+<li>All date properties are converted from strings formatted like "YYYYMMDD HH:MM:SS" to a normal JavaScript date strings like "2014-08-30T14:53:34-05:00"</li>
+</ul><h4>
+<a name="install-it" class="anchor" href="#install-it"><span class="octicon octicon-link"></span></a>Install It</h4>
+
+<pre><code>npm install cta-bus-tracker
+</code></pre>
+
+<hr><h4>
+<a name="require-it" class="anchor" href="#require-it"><span class="octicon octicon-link"></span></a>Require It</h4>
+
+<div class="highlight highlight-javascript"><pre><span class="kd">var</span> <span class="nx">cta</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span> <span class="s2">"cta-bus-tracker"</span> <span class="p">);</span>
+</pre></div>
+
+<hr><h4>
+<a name="initialize-it" class="anchor" href="#initialize-it"><span class="octicon octicon-link"></span></a>Initialize It</h4>
+
+<div class="highlight highlight-javascript"><pre><span class="kd">var</span> <span class="nx">busTracker</span> <span class="o">=</span> <span class="nx">cta</span><span class="p">(</span> <span class="s2">"your CTA API KEY"</span> <span class="p">);</span>
+</pre></div>
+
+<hr><h4>
+<a name="time" class="anchor" href="#time"><span class="octicon octicon-link"></span></a>Time</h4>
+
+<div class="highlight highlight-javascript"><pre><span class="nx">busTracker</span><span class="p">.</span><span class="nx">time</span><span class="p">(</span> <span class="kd">function</span> <span class="p">(</span> <span class="nx">err</span><span class="p">,</span> <span class="nx">data</span> <span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span> <span class="nx">err</span> <span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// handle error</span>
+    <span class="p">}</span>
+    <span class="c1">// use data</span>
+<span class="p">}</span> <span class="p">);</span>
+</pre></div>
+
+<p><strong>Example data:</strong></p>
+
+<div class="highlight highlight-javascript"><pre><span class="s2">"2014-08-30T14:53:34-05:00"</span>
+</pre></div>
+
+<hr><h4>
+<a name="vehicles-by-id" class="anchor" href="#vehicles-by-id"><span class="octicon octicon-link"></span></a>Vehicles By ID</h4>
+
+<div class="highlight highlight-javascript"><pre><span class="c1">// a list of up to 10 vehicle IDs</span>
+<span class="kd">var</span> <span class="nx">vehicleIds</span> <span class="o">=</span> <span class="p">[</span> <span class="s2">"1973"</span> <span class="p">];</span>
+
+<span class="nx">busTracker</span><span class="p">.</span><span class="nx">vehiclesById</span><span class="p">(</span> <span class="nx">vehicleIds</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span> <span class="nx">err</span><span class="p">,</span> <span class="nx">data</span> <span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span> <span class="nx">err</span> <span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// handle error</span>
+    <span class="p">}</span>
+    <span class="c1">// use data</span>
+<span class="p">}</span> <span class="p">);</span>
+</pre></div>
+
+<p><strong>Example data:</strong></p>
+
+<div class="highlight highlight-javascript"><pre><span class="p">{</span>
+    <span class="nx">vid</span><span class="o">:</span> <span class="s1">'1973'</span><span class="p">,</span>
+    <span class="nx">tmstmp</span><span class="o">:</span> <span class="s1">'2014-08-30T14:55:00-05:00'</span><span class="p">,</span>
+    <span class="nx">lat</span><span class="o">:</span> <span class="s1">'41.949149812970845'</span><span class="p">,</span>
+    <span class="nx">lon</span><span class="o">:</span> <span class="s1">'-87.64872932434082'</span><span class="p">,</span>
+    <span class="nx">hdg</span><span class="o">:</span> <span class="s1">'287'</span><span class="p">,</span>
+    <span class="nx">pid</span><span class="o">:</span> <span class="s1">'4735'</span><span class="p">,</span>
+    <span class="nx">rt</span><span class="o">:</span> <span class="s1">'8'</span><span class="p">,</span>
+    <span class="nx">des</span><span class="o">:</span> <span class="s1">'79th'</span><span class="p">,</span>
+    <span class="nx">pdist</span><span class="o">:</span> <span class="s1">'318'</span><span class="p">,</span>
+    <span class="nx">spd</span><span class="o">:</span> <span class="s1">'0'</span><span class="p">,</span>
+    <span class="nx">tablockid</span><span class="o">:</span> <span class="s1">'8 -752'</span><span class="p">,</span>
+    <span class="nx">tatripid</span><span class="o">:</span> <span class="s1">'139'</span><span class="p">,</span>
+    <span class="nx">zone</span><span class="o">:</span> <span class="s1">''</span>
+<span class="p">}</span>
+</pre></div>
+
+<p><strong>Note:</strong> If more than one vehicle ID is provided <em>data</em> will be an array of objects.</p>
+
+<hr><h4>
+<a name="vehicles-by-route" class="anchor" href="#vehicles-by-route"><span class="octicon octicon-link"></span></a>Vehicles By route</h4>
+
+<div class="highlight highlight-javascript"><pre><span class="c1">// a list of up to 10 vehicle IDs</span>
+<span class="kd">var</span> <span class="nx">routeIds</span> <span class="o">=</span> <span class="p">[</span> <span class="s2">"8"</span> <span class="p">];</span>
+
+<span class="nx">busTracker</span><span class="p">.</span><span class="nx">vehiclesById</span><span class="p">(</span> <span class="nx">routeIds</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span> <span class="nx">err</span><span class="p">,</span> <span class="nx">data</span> <span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span> <span class="nx">err</span> <span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// handle error</span>
+    <span class="p">}</span>
+    <span class="c1">// use data</span>
+<span class="p">}</span> <span class="p">);</span>
+</pre></div>
+
+<p><strong>Example data:</strong></p>
+
+<div class="highlight highlight-javascript"><pre><span class="p">[</span>
+    <span class="p">{</span>
+        <span class="nx">vid</span><span class="o">:</span> <span class="s1">'1973'</span><span class="p">,</span>
+        <span class="nx">tmstmp</span><span class="o">:</span> <span class="s1">'2014-08-30T15:05:00-05:00'</span><span class="p">,</span>
+        <span class="nx">lat</span><span class="o">:</span> <span class="s1">'41.93126130439866'</span><span class="p">,</span>
+        <span class="nx">lon</span><span class="o">:</span> <span class="s1">'-87.64894748741472'</span><span class="p">,</span>
+        <span class="nx">hdg</span><span class="o">:</span> <span class="s1">'173'</span><span class="p">,</span>
+        <span class="nx">pid</span><span class="o">:</span> <span class="s1">'4735'</span><span class="p">,</span>
+        <span class="nx">rt</span><span class="o">:</span> <span class="s1">'8'</span><span class="p">,</span>
+        <span class="nx">des</span><span class="o">:</span> <span class="s1">'79th'</span><span class="p">,</span>
+        <span class="nx">pdist</span><span class="o">:</span> <span class="s1">'7027'</span><span class="p">,</span>
+        <span class="nx">spd</span><span class="o">:</span> <span class="s1">'23'</span><span class="p">,</span>
+        <span class="nx">tablockid</span><span class="o">:</span> <span class="s1">'8 -752'</span><span class="p">,</span>
+        <span class="nx">tatripid</span><span class="o">:</span> <span class="s1">'139'</span><span class="p">,</span>
+        <span class="nx">zone</span><span class="o">:</span> <span class="s1">''</span>
+    <span class="p">},</span>
+    <span class="p">...</span>
+<span class="p">]</span>
+</pre></div>
+
+<hr><h4>
+<a name="routes" class="anchor" href="#routes"><span class="octicon octicon-link"></span></a>Routes</h4>
+
+<div class="highlight highlight-javascript"><pre><span class="nx">busTracker</span><span class="p">.</span><span class="nx">routes</span><span class="p">(</span> <span class="kd">function</span> <span class="p">(</span> <span class="nx">err</span><span class="p">,</span> <span class="nx">data</span> <span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span> <span class="nx">err</span> <span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// handle error</span>
+    <span class="p">}</span>
+    <span class="c1">// use data</span>
+<span class="p">}</span> <span class="p">);</span>
+</pre></div>
+
+<p><strong>Example data:</strong></p>
+
+<div class="highlight highlight-javascript"><pre><span class="p">[</span>
+    <span class="p">{</span>
+        <span class="nx">rt</span><span class="o">:</span> <span class="s1">'1'</span><span class="p">,</span>
+        <span class="nx">rtnm</span><span class="o">:</span> <span class="s1">'Bronzeville/Union Station'</span><span class="p">,</span>
+        <span class="nx">rtclr</span><span class="o">:</span> <span class="s1">'#336633'</span>
+    <span class="p">},</span>
+    <span class="p">...</span>
+<span class="p">]</span>
+</pre></div>
+
+<hr><h4>
+<a name="route-directions" class="anchor" href="#route-directions"><span class="octicon octicon-link"></span></a>Route Directions</h4>
+
+<div class="highlight highlight-javascript"><pre><span class="kd">var</span> <span class="nx">routeId</span> <span class="o">=</span> <span class="s2">"1"</span><span class="p">;</span>
+
+<span class="nx">busTracker</span><span class="p">.</span><span class="nx">routeDirections</span><span class="p">(</span> <span class="nx">routeId</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span> <span class="nx">err</span><span class="p">,</span> <span class="nx">data</span> <span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span> <span class="nx">err</span> <span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// handle error</span>
+    <span class="p">}</span>
+    <span class="c1">// use data</span>
+<span class="p">}</span> <span class="p">);</span>
+</pre></div>
+
+<p><strong>Example data:</strong></p>
+
+<div class="highlight highlight-javascript"><pre><span class="p">[</span>
+    <span class="s1">'Northbound'</span><span class="p">,</span>
+    <span class="s1">'Southbound'</span>
+<span class="p">]</span>
+</pre></div>
+
+<hr><h4>
+<a name="stops" class="anchor" href="#stops"><span class="octicon octicon-link"></span></a>Stops</h4>
+
+<div class="highlight highlight-javascript"><pre><span class="kd">var</span> <span class="nx">routeId</span> <span class="o">=</span> <span class="s2">"1"</span><span class="p">;</span>
+<span class="kd">var</span> <span class="nx">routeDirection</span> <span class="o">=</span> <span class="s2">"Northbound"</span><span class="p">;</span>
+
+<span class="nx">busTracker</span><span class="p">.</span><span class="nx">stops</span><span class="p">(</span> <span class="nx">routeId</span><span class="p">,</span> <span class="nx">routeDirection</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span> <span class="nx">err</span><span class="p">,</span> <span class="nx">data</span> <span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span> <span class="nx">err</span> <span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// handle error</span>
+    <span class="p">}</span>
+    <span class="c1">// use data</span>
+<span class="p">}</span> <span class="p">);</span>
+</pre></div>
+
+<p><strong>Example data:</strong></p>
+
+<div class="highlight highlight-javascript"><pre><span class="p">[</span>
+    <span class="p">{</span>
+        <span class="nx">stpid</span><span class="o">:</span> <span class="s1">'1577'</span><span class="p">,</span>
+        <span class="nx">stpnm</span><span class="o">:</span> <span class="s1">'1509 S Michigan'</span><span class="p">,</span>
+        <span class="nx">lat</span><span class="o">:</span> <span class="s1">'41.861838603628'</span><span class="p">,</span>
+        <span class="nx">lon</span><span class="o">:</span> <span class="s1">'-87.623975872993'</span>
+    <span class="p">},</span>
+    <span class="p">...</span>
+<span class="p">]</span>
+</pre></div>
+
+<hr><h4>
+<a name="patterns-by-id" class="anchor" href="#patterns-by-id"><span class="octicon octicon-link"></span></a>Patterns By ID</h4>
+
+<div class="highlight highlight-javascript"><pre><span class="c1">// a list of up to 10 pattern IDs</span>
+<span class="kd">var</span> <span class="nx">parrernIds</span> <span class="o">=</span> <span class="p">[</span> <span class="s2">"4735"</span> <span class="p">];</span>
+
+<span class="nx">busTracker</span><span class="p">.</span><span class="nx">patternsById</span><span class="p">(</span> <span class="nx">patternIds</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span> <span class="nx">err</span><span class="p">,</span> <span class="nx">data</span> <span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span> <span class="nx">err</span> <span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// handle error</span>
+    <span class="p">}</span>
+    <span class="c1">// use data</span>
+<span class="p">}</span> <span class="p">);</span>
+</pre></div>
+
+<p><strong>Example data:</strong></p>
+
+<div class="highlight highlight-javascript"><pre><span class="p">{</span>
+    <span class="nx">pid</span><span class="o">:</span> <span class="s1">'4735'</span><span class="p">,</span>
+    <span class="nx">ln</span><span class="o">:</span> <span class="s1">'74252.0'</span><span class="p">,</span>
+    <span class="nx">rtdir</span><span class="o">:</span> <span class="s1">'Southbound'</span><span class="p">,</span>
+    <span class="nx">pt</span><span class="o">:</span>
+    <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="nx">seq</span><span class="o">:</span> <span class="s1">'1'</span><span class="p">,</span>
+            <span class="nx">lat</span><span class="o">:</span> <span class="s1">'41.949815854453'</span><span class="p">,</span>
+            <span class="nx">lon</span><span class="o">:</span> <span class="s1">'-87.649156451225'</span><span class="p">,</span>
+            <span class="nx">typ</span><span class="o">:</span> <span class="s1">'S'</span><span class="p">,</span>
+            <span class="nx">stpid</span><span class="o">:</span> <span class="s1">'5756'</span><span class="p">,</span>
+            <span class="nx">stpnm</span><span class="o">:</span> <span class="s1">'Halsted &amp; Waveland/Broadway Terminal'</span><span class="p">,</span>
+            <span class="nx">pdist</span><span class="o">:</span> <span class="s1">'0.0'</span>
+        <span class="p">},</span>
+        <span class="p">...</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+
+<p><strong>Note:</strong> If more than one pattern ID is provided <em>data</em> will be an array of objects.</p>
+
+<hr><h4>
+<a name="patterns-by-route" class="anchor" href="#patterns-by-route"><span class="octicon octicon-link"></span></a>Patterns By Route</h4>
+
+<div class="highlight highlight-javascript"><pre><span class="c1">// a list of up to 10 pattern IDs</span>
+<span class="kd">var</span> <span class="nx">routeId</span> <span class="o">=</span> <span class="s2">"1"</span><span class="p">;</span>
+
+<span class="nx">busTracker</span><span class="p">.</span><span class="nx">patternsByRoute</span><span class="p">(</span> <span class="nx">routeId</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span> <span class="nx">err</span><span class="p">,</span> <span class="nx">data</span> <span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span> <span class="nx">err</span> <span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// handle error</span>
+    <span class="p">}</span>
+    <span class="c1">// use data</span>
+<span class="p">}</span> <span class="p">);</span>
+</pre></div>
+
+<p><strong>Example data:</strong></p>
+
+<div class="highlight highlight-javascript"><pre><span class="p">[</span>
+    <span class="p">{</span>
+        <span class="nx">pid</span><span class="o">:</span> <span class="s1">'4735'</span><span class="p">,</span>
+        <span class="nx">ln</span><span class="o">:</span> <span class="s1">'74252.0'</span><span class="p">,</span>
+        <span class="nx">rtdir</span><span class="o">:</span> <span class="s1">'Southbound'</span><span class="p">,</span>
+        <span class="nx">pt</span><span class="o">:</span>
+        <span class="p">[</span>
+            <span class="p">{</span>
+                <span class="nx">seq</span><span class="o">:</span> <span class="s1">'1'</span><span class="p">,</span>
+                <span class="nx">lat</span><span class="o">:</span> <span class="s1">'41.949815854453'</span><span class="p">,</span>
+                <span class="nx">lon</span><span class="o">:</span> <span class="s1">'-87.649156451225'</span><span class="p">,</span>
+                <span class="nx">typ</span><span class="o">:</span> <span class="s1">'S'</span><span class="p">,</span>
+                <span class="nx">stpid</span><span class="o">:</span> <span class="s1">'5756'</span><span class="p">,</span>
+                <span class="nx">stpnm</span><span class="o">:</span> <span class="s1">'Halsted &amp; Waveland/Broadway Terminal'</span><span class="p">,</span>
+                <span class="nx">pdist</span><span class="o">:</span> <span class="s1">'0.0'</span>
+            <span class="p">},</span>
+            <span class="p">...</span>
+        <span class="p">]</span>
+    <span class="p">},</span>
+    <span class="p">...</span>
+<span class="p">]</span>
+</pre></div>
+
+<hr><h4>
+<a name="predictions-by-stop" class="anchor" href="#predictions-by-stop"><span class="octicon octicon-link"></span></a>Predictions By Stop</h4>
+
+<div class="highlight highlight-javascript"><pre><span class="kd">var</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="c1">// a list of up to 10 stop IDs</span>
+    <span class="nx">stopIds</span><span class="o">:</span> <span class="p">[</span> <span class="s2">"1577"</span> <span class="p">],</span>
+    <span class="c1">// topCount is optional</span>
+    <span class="nx">topCount</span><span class="o">:</span> <span class="mi">5</span>
+<span class="p">};</span>
+
+<span class="nx">busTracker</span><span class="p">.</span><span class="nx">predictionsByStop</span><span class="p">(</span> <span class="nx">options</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span> <span class="nx">err</span><span class="p">,</span> <span class="nx">data</span> <span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span> <span class="nx">err</span> <span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// handle error</span>
+    <span class="p">}</span>
+    <span class="c1">// use data</span>
+<span class="p">}</span> <span class="p">);</span>
+</pre></div>
+
+<p><strong>Example data:</strong></p>
+
+<div class="highlight highlight-javascript"><pre><span class="p">[</span>
+    <span class="p">{</span>
+        <span class="nx">tmstmp</span><span class="o">:</span> <span class="s1">'2014-08-30T15:26:00-05:00'</span><span class="p">,</span>
+        <span class="nx">typ</span><span class="o">:</span> <span class="s1">'A'</span><span class="p">,</span>
+        <span class="nx">stpnm</span><span class="o">:</span> <span class="s1">'1509 S Michigan'</span><span class="p">,</span>
+        <span class="nx">stpid</span><span class="o">:</span> <span class="s1">'1577'</span><span class="p">,</span>
+        <span class="nx">vid</span><span class="o">:</span> <span class="s1">'1261'</span><span class="p">,</span>
+        <span class="nx">dstp</span><span class="o">:</span> <span class="s1">'7564'</span><span class="p">,</span>
+        <span class="nx">rt</span><span class="o">:</span> <span class="s1">'4'</span><span class="p">,</span>
+        <span class="nx">rtdir</span><span class="o">:</span> <span class="s1">'Northbound'</span><span class="p">,</span>
+        <span class="nx">des</span><span class="o">:</span> <span class="s1">'Illinois Center'</span><span class="p">,</span>
+        <span class="nx">prdtm</span><span class="o">:</span> <span class="s1">'2014-08-30T15:34:00-05:00'</span><span class="p">,</span>
+        <span class="nx">tablockid</span><span class="o">:</span> <span class="s1">'4 -715'</span><span class="p">,</span>
+        <span class="nx">tatripid</span><span class="o">:</span> <span class="s1">'126'</span><span class="p">,</span>
+        <span class="nx">zone</span><span class="o">:</span> <span class="s1">''</span>
+    <span class="p">},</span>
+    <span class="p">...</span>
+<span class="p">]</span>
+</pre></div>
+
+<hr><h4>
+<a name="predictions-by-vehicle" class="anchor" href="#predictions-by-vehicle"><span class="octicon octicon-link"></span></a>Predictions By Vehicle</h4>
+
+<div class="highlight highlight-javascript"><pre><span class="kd">var</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="c1">// a list of up to 10 vehicle IDs</span>
+    <span class="nx">vehicleIds</span><span class="o">:</span> <span class="p">[</span> <span class="s2">"1230"</span> <span class="p">],</span>
+    <span class="c1">// topCount is optional</span>
+    <span class="nx">topCount</span><span class="o">:</span> <span class="mi">5</span>
+<span class="p">};</span>
+
+<span class="nx">busTracker</span><span class="p">.</span><span class="nx">predictionsByVehicle</span><span class="p">(</span> <span class="nx">options</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span> <span class="nx">err</span><span class="p">,</span> <span class="nx">data</span> <span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span> <span class="nx">err</span> <span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// handle error</span>
+    <span class="p">}</span>
+    <span class="c1">// use data</span>
+<span class="p">}</span> <span class="p">);</span>
+</pre></div>
+
+<p><strong>Example data:</strong></p>
+
+<div class="highlight highlight-javascript"><pre><span class="p">[</span>
+    <span class="p">{</span>
+        <span class="nx">tmstmp</span><span class="o">:</span> <span class="s1">'2014-08-30T15:31:00-05:00'</span><span class="p">,</span>
+        <span class="nx">typ</span><span class="o">:</span> <span class="s1">'A'</span><span class="p">,</span>
+        <span class="nx">stpnm</span><span class="o">:</span> <span class="s1">'Halsted &amp; Addison'</span><span class="p">,</span>
+        <span class="nx">stpid</span><span class="o">:</span> <span class="s1">'14901'</span><span class="p">,</span>
+        <span class="nx">vid</span><span class="o">:</span> <span class="s1">'1230'</span><span class="p">,</span>
+        <span class="nx">dstp</span><span class="o">:</span> <span class="s1">'86'</span><span class="p">,</span>
+        <span class="nx">rt</span><span class="o">:</span> <span class="s1">'8'</span><span class="p">,</span>
+        <span class="nx">rtdir</span><span class="o">:</span> <span class="s1">'Southbound'</span><span class="p">,</span>
+        <span class="nx">des</span><span class="o">:</span> <span class="s1">'79th'</span><span class="p">,</span>
+        <span class="nx">prdtm</span><span class="o">:</span> <span class="s1">'2014-08-30T15:31:00-05:00'</span><span class="p">,</span>
+        <span class="nx">tablockid</span><span class="o">:</span> <span class="s1">'8 -706'</span><span class="p">,</span>
+        <span class="nx">tatripid</span><span class="o">:</span> <span class="s1">'145'</span><span class="p">,</span>
+        <span class="nx">zone</span><span class="o">:</span> <span class="s1">''</span>
+    <span class="p">},</span>
+    <span class="p">...</span>
+<span class="p">]</span>
+</pre></div>
+
+<hr><h4>
+<a name="service-bulletins-by-route" class="anchor" href="#service-bulletins-by-route"><span class="octicon octicon-link"></span></a>Service Bulletins By Route</h4>
+
+<div class="highlight highlight-javascript"><pre><span class="kd">var</span> <span class="nx">options</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="c1">// a list of up to 10 route IDs</span>
+    <span class="nx">routeIds</span><span class="o">:</span> <span class="p">[</span> <span class="s2">"1"</span> <span class="p">],</span>
+    <span class="c1">// routeDirection is optional</span>
+    <span class="nx">routeDirection</span><span class="o">:</span> <span class="s2">"Northbound"</span>
+<span class="p">};</span>
+
+<span class="nx">busTracker</span><span class="p">.</span><span class="nx">serviceBulletinsByRoute</span><span class="p">(</span> <span class="nx">options</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span> <span class="nx">err</span><span class="p">,</span> <span class="nx">data</span> <span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span> <span class="nx">err</span> <span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// handle error</span>
+    <span class="p">}</span>
+    <span class="c1">// use data</span>
+<span class="p">}</span> <span class="p">);</span>
+</pre></div>
+
+<p><strong>Example data:</strong></p>
+
+<div class="highlight highlight-javascript"><pre><span class="p">[</span>
+    <span class="p">{</span>
+        <span class="nx">nm</span><span class="o">:</span> <span class="s1">'#36 Broadway - Bus Stop Relocation'</span><span class="p">,</span>
+        <span class="nx">sbj</span><span class="o">:</span> <span class="s1">' Bus Stop Relocation'</span><span class="p">,</span>
+        <span class="nx">dtl</span><span class="o">:</span> <span class="s1">'Effective Wed, May 7&lt;br/&gt;&lt;br/&gt;The northbound #36 bus stop on the northeast corner at Broadway/Granville has been relocated to the southeast corner at Broadway/Granville.&lt;br/&gt; &lt;br/&gt;'</span><span class="p">,</span>
+        <span class="nx">brf</span><span class="o">:</span> <span class="s1">''</span><span class="p">,</span>
+        <span class="nx">prty</span><span class="o">:</span> <span class="s1">'Low'</span>
+    <span class="p">},</span>
+    <span class="p">...</span>
+<span class="p">]</span>
+</pre></div>
+
+<hr><h4>
+<a name="service-bulletins-by-route-1" class="anchor" href="#service-bulletins-by-route-1"><span class="octicon octicon-link"></span></a>Service Bulletins By Route</h4>
+
+<div class="highlight highlight-javascript"><pre><span class="c1">// a list of up to 10 stop IDs</span>
+<span class="kd">var</span> <span class="nx">stopIds</span> <span class="o">=</span> <span class="p">[</span> <span class="s2">"1577"</span> <span class="p">];</span>
+
+<span class="nx">busTracker</span><span class="p">.</span><span class="nx">serviceBulletinsByStop</span><span class="p">(</span> <span class="nx">stopIds</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span> <span class="nx">err</span><span class="p">,</span> <span class="nx">data</span> <span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span> <span class="nx">err</span> <span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// handle error</span>
+    <span class="p">}</span>
+    <span class="c1">// use data</span>
+<span class="p">}</span> <span class="p">);</span>
+</pre></div>
+
+<p><strong>Example data:</strong></p>
+
+<div class="highlight highlight-javascript"><pre><span class="p">[</span>
+    <span class="p">{</span>
+        <span class="nx">nm</span><span class="o">:</span> <span class="s1">'3 K. Drive buses are temp rerouted at K Drive/79th'</span><span class="p">,</span>
+        <span class="nx">sbj</span><span class="o">:</span> <span class="s1">'# 3 King Drive buses rerouted'</span><span class="p">,</span>
+        <span class="nx">dtl</span><span class="o">:</span> <span class="s1">'#3 King Drive buses are temporarily rerouted in both directions via King Drive, 79th, Cottage Grove, 83rd, and King Drive, due to street blockage.&lt;br/&gt;&lt;br/&gt;Allow extra travel time.&lt;br/&gt; &lt;br/&gt;'</span><span class="p">,</span>
+        <span class="nx">brf</span><span class="o">:</span> <span class="s1">''</span><span class="p">,</span>
+        <span class="nx">prty</span><span class="o">:</span> <span class="s1">'Medium'</span><span class="p">,</span>
+        <span class="nx">srvc</span><span class="o">:</span> <span class="p">{</span> <span class="nx">rt</span><span class="o">:</span> <span class="s1">'3'</span> <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="p">...</span>
+<span class="p">]</span>
+</pre></div>
+      </section>
+
+    </div>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+    
+  </body>
+</html>
