@@ -1,6 +1,6 @@
 {
   "name": "cta-bus-tracker",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A Node.js package for the Chicago Transit Authority's bus tracker API",
   "main": "./lib/cta-bus-tracker.js",
   "scripts": {
